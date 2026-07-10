@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" class="bg-[#0C0C0C] text-white selection:bg-[#D4AF37] selection:text-[#0C0C0C] scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    
+    <!-- Meta tags for PWA and Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Ganesha Fitness" />
+    <meta name="theme-color" content="#0C0C0C" />
+    
+    <!-- Advanced SEO & Discoverability Metadata -->
+    <meta name="description" content="Ganesha Fitness is the premier high-performance athletic sanctuary in Shikrapur, Pune. Experience biomechanically calibrated equipment, custom nutrition models, and elite coaching." />
+    <meta name="keywords" content="Ganesha Fitness, gym in Shikrapur, Pune gym, personal trainers Shikrapur, premium fitness center Pune, biomechanics training, bodybuilding gym Shikrapur, Pune-Nagar highway gym" />
+    <meta name="author" content="Ganesha Fitness" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph (Facebook / LinkedIn) Social Share Metadata -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ganesha Fitness | Premium Athletic Sanctuary in Shikrapur, Pune" />
+    <meta property="og:description" content="Experience Pune's ultra-premium fitness sanctuary. Elite personal training, science-backed biomechanical coaching, and world-class recovery zones." />
+    <meta property="og:image" content="/icon.svg" />
+    <meta property="og:url" content="https://ganeshafitness.com" />
+    <meta property="og:site_name" content="Ganesha Fitness" />
+    
+    <!-- Twitter Social Share Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ganesha Fitness | Premium Athletic Sanctuary" />
+    <meta name="twitter:description" content="Train on Pune's finest biomechanically-leveraged equipment under elite certified personal coaches." />
+    <meta name="twitter:image" content="/icon.svg" />
+    
+    <title>Ganesha Fitness | Premium Gym &amp; Elite Training Sanctuary</title>
+    
+    <!-- PWA Manifest & Icons -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    
+    <!-- Google Fonts Preconnect and Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body class="bg-[#0C0C0C] text-white font-sans overflow-x-hidden antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Register Service Worker for PWA -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((reg) => console.log('Service Worker registered successfully', reg.scope))
+            .catch((err) => console.log('Service Worker registration failed', err));
+        });
+      }
+    </script>
+  </body>
+</html>

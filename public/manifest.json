@@ -1,0 +1,38 @@
+{
+  "name": "Ganesha Fitness",
+  "short_name": "GaneshaFit",
+  "description": "Premium Ganesha Fitness Gym in Shikrapur, Pune. Experience elite training, dynamic facilities, and personalized coaching.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0C0C0C",
+  "theme_color": "#D4AF37",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Membership Plans",
+      "short_name": "Plans",
+      "url": "/plans",
+      "description": "View premium fitness packages"
+    },
+    {
+      "name": "Gym Facilities",
+      "short_name": "Facilities",
+      "url": "/facilities",
+      "description": "Explore our high-end equipment and zones"
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "url": "/contact",
+      "description": "Get in touch with Ganesha Fitness"
+    }
+  ]
+}

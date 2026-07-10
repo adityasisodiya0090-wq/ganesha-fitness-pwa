@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF099" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#8A640F" />
+    </linearGradient>
+  </defs>
+  <!-- Background Matte Black -->
+  <rect width="512" height="512" rx="128" fill="#0C0C0C" />
+  
+  <!-- Stylized Ganesha + Fitness Emblem -->
+  <!-- Outer glowing rings -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="url(#gold-grad)" stroke-width="4" opacity="0.4" />
+  <circle cx="256" cy="256" r="200" fill="none" stroke="url(#gold-grad)" stroke-width="12" />
+  
+  <!-- Dumbbell / Ganesha fusion symbol in center -->
+  <g transform="translate(128, 128) scale(0.5)">
+    <!-- Ganesha Head & Trunk contour combined with powerful curves -->
+    <path d="M256,60 C180,60 140,110 140,180 C140,210 160,250 180,270 C200,290 220,320 220,360 L220,410 C220,430 236,446 256,446 C276,446 292,430 292,410 L292,360 C292,320 312,290 332,270 C352,250 372,210 372,180 C372,110 332,60 256,60 Z" fill="url(#gold-grad)" />
+    <!-- Tusk -->
+    <path d="M220,280 L200,290 L220,300 Z" fill="#0C0C0C" />
+    <!-- Crown (Mukut) -->
+    <path d="M220,50 L256,10 L292,50 Z" fill="url(#gold-grad)" />
+    <!-- Dynamic circular energy lines -->
+    <path d="M256,120 Q230,120 230,150 Q230,180 256,180 Q282,180 282,150 Q282,120 256,120 Z" fill="none" stroke="#0C0C0C" stroke-width="8" />
+  </g>
+</svg>

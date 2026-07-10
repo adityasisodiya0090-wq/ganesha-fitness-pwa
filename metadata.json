@@ -1,0 +1,6 @@
+{
+  "name": "Ganesha Fitness",
+  "description": "Premium Progressive Web App (PWA) prototype for Ganesha Fitness Gym in Shikrapur, Pune, India.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
