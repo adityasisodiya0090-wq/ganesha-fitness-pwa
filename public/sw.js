@@ -1,10 +1,12 @@
-const CACHE_NAME = 'ganesha-fitness-pwa-v2';
+const CACHE_NAME = 'ganesha-fitness-pwa-v4';
 
 // Core assets to pre-cache immediately on install
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
   '/icon.svg',
+  '/icon-192.png',
+  '/icon-512.png',
   '/manifest.json'
 ];
 
@@ -25,7 +27,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
+          if (cacheName !== CACHE_NAME && cacheName !== 'ganesha-fitness-images') {
             console.log('[Service Worker] Deleting obsolete cache:', cacheName);
             return caches.delete(cacheName);
           }
@@ -65,7 +67,27 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 2. Static Assets (JS, CSS, SVGs, Google Fonts) - Stale-While-Revalidate
+  // 2. Heavy External Dynamic Images (Unsplash) - Cache-First, fallback to network
+  if (url.hostname.includes('images.unsplash.com')) {
+    event.respondWith(
+      caches.open('ganesha-fitness-images').then((cache) => {
+        return cache.match(event.request).then((cachedResponse) => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          return fetch(event.request).then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              cache.put(event.request, networkResponse.clone());
+            }
+            return networkResponse;
+          });
+        });
+      })
+    );
+    return;
+  }
+
+  // 3. Static Assets (JS, CSS, SVGs, Google Fonts) - Stale-While-Revalidate
   const isStaticAsset = 
     url.origin === self.location.origin || 
     url.hostname.includes('fonts.googleapis.com') || 

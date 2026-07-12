@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useInView } from 'motion/react';
+import { motion, useInView } from 'framer-motion';
 import { BaseProps } from '../../types';
 
 interface ScrollRevealProps extends BaseProps {

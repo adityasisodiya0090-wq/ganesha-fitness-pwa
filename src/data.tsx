@@ -60,7 +60,7 @@ export const facilitiesData: FacilityItem[] = [
 export const plansData: MembershipPlan[] = [
   {
     name: 'Monthly Tier',
-    price: '₹2,000',
+    price: '₹1,200',
     period: 'Month',
     subtitle: 'COMMITTED ACCESS',
     icon: <Award className="w-5 h-5 text-gold-500" />,

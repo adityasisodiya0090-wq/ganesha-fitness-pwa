@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Wifi, WifiOff, X, Sparkles } from 'lucide-react';
 import Button from './Button';
 

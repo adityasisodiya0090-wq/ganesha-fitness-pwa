@@ -24,6 +24,33 @@
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Offset for sticky navbar */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  overscroll-behavior-y: contain; /* Prevents nested scroll overscroll chaining */
+}
+
+/* Eliminate tap delay and highlighting on mobile devices */
+a, button, select, input, textarea, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* GPU Compositing & Hardware Acceleration for 60FPS animations */
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

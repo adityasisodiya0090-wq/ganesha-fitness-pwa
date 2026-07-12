@@ -76,7 +76,7 @@ export default function Trainers() {
                       </Button>
                     </a>
                     <a
-                      href="https://wa.me/919876543210"
+                      href={`https://wa.me/917249323535?text=Hi%20Ganesha%20Fitness,%20I'm%20interested%20in%20training%20with%20${encodeURIComponent(trainer.name)}!`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

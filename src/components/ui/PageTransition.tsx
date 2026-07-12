@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { BaseProps } from '../../types';
 
 export default function PageTransition({ children, className = '', id }: BaseProps) {
@@ -9,7 +9,7 @@ export default function PageTransition({ children, className = '', id }: BasePro
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -15 }}
       transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-      className={`w-full min-h-screen ${className}`}
+      className={`w-full min-h-screen gpu-accelerated ${className}`}
     >
       {children}
     </motion.div>

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 
@@ -26,6 +26,46 @@ const SuspenseFallback = () => (
 );
 
 export default function App() {
+  useEffect(() => {
+    // Preload heavy dynamic routes when browser is idle to enable instant navigation
+    const handlePreload = () => {
+      const routes = [
+        () => import('./pages/About'),
+        () => import('./pages/Facilities'),
+        () => import('./pages/Plans'),
+        () => import('./pages/Trainers'),
+        () => import('./pages/Gallery'),
+        () => import('./pages/Reviews'),
+        () => import('./pages/Contact'),
+      ];
+
+      const runPreload = () => {
+        routes.forEach((preload) => {
+          try {
+            preload();
+          } catch (e) {
+            console.warn('Preload failed', e);
+          }
+        });
+      };
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          runPreload();
+        });
+      } else {
+        setTimeout(runPreload, 2000);
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      handlePreload();
+    } else {
+      window.addEventListener('load', handlePreload);
+      return () => window.removeEventListener('load', handlePreload);
+    }
+  }, []);
+
   return (
     <HashRouter>
       <Suspense fallback={<SuspenseFallback />}>

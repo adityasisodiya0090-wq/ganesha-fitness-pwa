@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Loader() {
   const [loading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ export default function Loader() {
           initial={{ y: 0 }}
           exit={{ y: '-100%' }}
           transition={{ duration: 0.85, ease: [0.85, 0, 0.15, 1] }} // Ultra-premium custom easeInOutExpo
-          className="fixed inset-0 bg-[#070707] z-[9999] flex flex-col items-center justify-center overflow-hidden"
+          className="fixed inset-0 bg-[#070707] z-[9999] flex flex-col items-center justify-center overflow-hidden gpu-accelerated"
         >
           {/* Ambient background glow inside the loader */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.04)_0%,transparent_70%)] pointer-events-none" />
@@ -64,15 +64,30 @@ export default function Loader() {
                   }}
                 />
                 
-                {/* Center logo path */}
-                <motion.path
-                  d="M256,150 C210,150 185,180 185,220 C185,240 195,265 210,275 Q235,310 235,340 L235,370 C235,380 245,390 256,390 C267,390 277,380 277,370 L277,340 Q277,310 302,275 C317,265 327,240 327,220 C327,180 302,150 256,150 Z"
-                  fill="url(#loader-gold)"
+                {/* Center Dumbbell Logo Group */}
+                <motion.g
                   initial={{ opacity: 0.8, scale: 0.95 }}
                   animate={{ opacity: [0.8, 1, 0.8], scale: [0.95, 1.02, 0.95] }}
                   transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                   style={{ transformOrigin: '256px 256px' }}
-                />
+                >
+                  <g fill="url(#loader-gold)">
+                    {/* Central Handle Bar */}
+                    <rect x="172" y="234" width="168" height="44" rx="14" />
+                    
+                    {/* Left Weight Plates */}
+                    <rect x="136" y="150" width="36" height="212" rx="16" />
+                    <rect x="106" y="176" width="24" height="160" rx="12" />
+                    <rect x="82" y="201" width="18" height="110" rx="9" />
+                    <circle cx="70" cy="256" r="10" />
+
+                    {/* Right Weight Plates (Mirrored) */}
+                    <rect x="340" y="150" width="36" height="212" rx="16" />
+                    <rect x="382" y="176" width="24" height="160" rx="12" />
+                    <rect x="412" y="201" width="18" height="110" rx="9" />
+                    <circle cx="442" cy="256" r="10" />
+                  </g>
+                </motion.g>
               </svg>
             </div>
 

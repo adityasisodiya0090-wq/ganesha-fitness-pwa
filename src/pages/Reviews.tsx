@@ -21,10 +21,8 @@ export default function Reviews() {
             {reviewsData.map((rev, i) => (
               <ScrollReveal key={i} direction="up" delay={i * 0.1} scale={0.97}>
                 <Card
-                  title={rev.name}
-                  subtitle={rev.role}
                   hoverEffect={true}
-                  className="bg-charcoal/60 border border-gold-500/5 hover:border-gold-500/15 p-6 flex flex-col justify-between h-full"
+                  className="bg-charcoal/60 border border-gold-500/5 hover:border-gold-500/15 flex flex-col justify-between h-full"
                 >
                   <div>
                     {/* Card Header Profile Initials */}

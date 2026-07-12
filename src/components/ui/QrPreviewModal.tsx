@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { X, QrCode, Copy, Check, Smartphone, Sparkles, ExternalLink } from 'lucide-react';
 
 interface QrPreviewModalProps {

@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { BaseProps } from '../../types';
 
 interface CardProps extends BaseProps, HTMLAttributes<HTMLDivElement> {

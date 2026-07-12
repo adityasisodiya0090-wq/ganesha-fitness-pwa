@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, MouseEvent } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { BaseProps } from '../../types';
 
 interface ButtonProps extends BaseProps, ButtonHTMLAttributes<HTMLButtonElement> {

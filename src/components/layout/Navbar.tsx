@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Dumbbell, ArrowRight, QrCode } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Container from '../ui/Container';
 import Button from '../ui/Button';
 import QrPreviewModal from '../ui/QrPreviewModal';
@@ -57,36 +57,36 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'py-4 bg-[#0C0C0C]/90 backdrop-blur-xl border-b border-gold-500/15 shadow-[0_4px_30px_rgba(0,0,0,0.8)]'
-            : 'py-6 bg-transparent border-b border-transparent'
+            ? 'py-3.5 sm:py-4 bg-[#0C0C0C]/95 backdrop-blur-xl border-b border-gold-500/15 shadow-[0_4px_30px_rgba(0,0,0,0.85)]'
+            : 'py-5 sm:py-6 bg-transparent border-b border-transparent'
         }`}
       >
-        <Container className="flex items-center justify-between">
+        <Container className="flex items-center justify-between w-full lg:gap-4 xl:gap-8 2xl:gap-12">
           {/* Logo Brand Title */}
-          <Link to="/" className="flex items-center gap-3 group relative z-50">
-            <div className="relative flex items-center justify-center w-11 h-11 border border-gold-500/35 rounded-sm overflow-hidden bg-gradient-to-br from-charcoal to-matte group-hover:border-gold-500 transition-colors duration-500">
-              <Dumbbell className="w-5 h-5 text-gold-500 transform -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+          <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group relative z-50 shrink-0">
+            <div className="relative flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 border border-gold-500/35 rounded-sm overflow-hidden bg-gradient-to-br from-charcoal to-matte group-hover:border-gold-500 transition-colors duration-500">
+              <Dumbbell className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-gold-500 transform -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gold-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
             <div className="flex flex-col">
-              <span className="font-display font-black text-lg sm:text-xl tracking-[0.15em] text-white block leading-none">
+              <span className="font-display font-black text-base sm:text-lg lg:text-xl tracking-[0.15em] text-white block leading-none">
                 GANESHA
               </span>
-              <span className="font-mono text-[9px] tracking-[0.3em] text-gold-500 uppercase block mt-1 font-semibold">
+              <span className="font-mono text-[8px] sm:text-[9px] tracking-[0.3em] text-gold-500 uppercase block mt-0.5 sm:mt-1 font-semibold">
                 FITNESS
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center lg:gap-3.5 xl:gap-5 2xl:gap-7 shrink-0">
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.path;
               return (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`font-display text-xs tracking-wider uppercase font-semibold relative py-2 transition-colors duration-300 group ${
+                  className={`font-display text-[10px] xl:text-[11px] 2xl:text-xs tracking-wider uppercase font-semibold relative py-2 transition-colors duration-300 group ${
                     isActive ? 'text-gold-500' : 'text-gray-300 hover:text-white'
                   }`}
                 >
@@ -108,36 +108,38 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Desktop Call To Action */}
-          <div className="hidden lg:flex items-center gap-6">
-            <button
-              type="button"
-              id="desktop-open-qr"
-              onClick={() => setIsQrOpen(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-charcoal border border-gold-500/20 hover:border-gold-500 hover:bg-gold-500/10 rounded-sm text-xs font-mono text-gold-500 transition-all duration-300 uppercase tracking-wider cursor-pointer"
-              title="Scan QR Code to view on your smartphone"
-            >
-              <QrCode className="w-3.5 h-3.5" />
-              Mobile Pass
-            </button>
-            <a
-              href="tel:+917249323535"
-              className="flex items-center gap-2 font-mono text-xs text-gray-400 hover:text-gold-500 transition-colors duration-300"
-            >
-              <Phone className="w-3.5 h-3.5 text-gold-500" />
-              +91 72493 23535
-            </a>
-            <Link to="/contact">
-              <Button variant="primary" size="sm" className="px-5 py-2.5">
-                Join Now
-              </Button>
-            </Link>
-          </div>
+          {/* Desktop Mobile Pass Button */}
+          <button
+            type="button"
+            id="desktop-open-qr"
+            onClick={() => setIsQrOpen(true)}
+            className="hidden lg:flex items-center gap-2 px-3 py-2 xl:px-4 xl:py-2.5 bg-charcoal border border-gold-500/20 hover:border-gold-500 hover:bg-gold-500/10 rounded-sm text-[10px] xl:text-xs font-mono text-gold-500 transition-all duration-300 uppercase tracking-wider cursor-pointer shrink-0"
+            title="Scan QR Code to view on your smartphone"
+          >
+            <QrCode className="w-3.5 h-3.5" />
+            Mobile Pass
+          </button>
+
+          {/* Desktop Phone Number */}
+          <a
+            href="tel:+917249323535"
+            className="hidden lg:flex items-center gap-2 font-mono text-[10px] xl:text-xs text-gray-400 hover:text-gold-500 transition-colors duration-300 shrink-0"
+          >
+            <Phone className="w-3.5 h-3.5 text-gold-500" />
+            +91 72493 23535
+          </a>
+
+          {/* Desktop Join Now Button */}
+          <Link to="/contact" className="hidden lg:block shrink-0">
+            <Button variant="primary" size="sm" className="px-4 py-2 xl:px-5 xl:py-2.5 text-[10px] xl:text-xs font-semibold">
+              Join Now
+            </Button>
+          </Link>
 
           {/* Mobile Hamburger toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-gray-300 hover:text-gold-500 transition-colors duration-300 relative z-50"
+            className="lg:hidden p-2 text-gray-300 hover:text-gold-500 transition-colors duration-300 relative z-50 shrink-0"
             aria-label="Toggle navigation menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

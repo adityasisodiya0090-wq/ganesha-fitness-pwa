@@ -3,7 +3,7 @@ import Section from '../components/ui/Section';
 import Card from '../components/ui/Card';
 import ScrollReveal from '../components/ui/ScrollReveal';
 import { Shield, Sparkles, Trophy, Flame, Zap, Users } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { pillarsData } from '../data';
 
 export default function About() {

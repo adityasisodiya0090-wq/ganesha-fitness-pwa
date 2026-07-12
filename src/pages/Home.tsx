@@ -1,4 +1,5 @@
-import { motion, useScroll, useTransform } from 'motion/react';
+import { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Trophy, Sparkles, ChevronDown, Flame, ShieldCheck } from 'lucide-react';
 import PageTransition from '../components/ui/PageTransition';
@@ -8,6 +9,16 @@ import { statsData } from '../data';
 
 export default function Home() {
   const { scrollY } = useScroll();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+    setIsDesktop(mediaQuery.matches);
+    
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
 
   // Premium Parallax Effect Transforms
   const yBg = useTransform(scrollY, [0, 800], [0, 200]);
@@ -44,8 +55,8 @@ export default function Home() {
 
   return (
     <PageTransition>
-      {/* 100vh Full Screen Section */}
-      <div className="relative h-screen min-h-[650px] w-full flex items-center justify-center overflow-hidden bg-matte">
+      {/* Responsive Hero Section */}
+      <div className="relative w-full min-h-screen lg:h-screen lg:min-h-[750px] flex items-center justify-center overflow-hidden bg-matte py-24 sm:py-32 lg:py-0">
         
         {/* Parallax Background Image with Zoom & Dark Overlay */}
         <motion.div
@@ -62,17 +73,17 @@ export default function Home() {
           />
           {/* Radial & Linear Overlays to emphasize gold text & lock down contrast */}
           <div className="absolute inset-0 bg-gradient-to-t from-matte via-matte/60 to-matte/30" />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/55" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.05)_0%,transparent_80%)]" />
         </motion.div>
 
         {/* Outer Grid Accent Lines */}
         <div className="absolute inset-0 border-x border-gold-500/5 max-w-7xl mx-auto pointer-events-none hidden md:block" />
 
-        {/* Content Container (Parallaxing Text layer) */}
+        {/* Content Container (Parallaxing Text layer on Desktop) */}
         <motion.div
-          style={{ y: yText }}
-          className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-16 flex flex-col items-center justify-center text-center h-full"
+          style={{ y: isDesktop ? yText : 0 }}
+          className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center justify-center text-center h-full"
         >
           {/* Floating Premium Badges */}
           <div className="absolute inset-0 pointer-events-none hidden lg:block overflow-hidden">
@@ -114,12 +125,12 @@ export default function Home() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-col items-center max-w-4xl"
+            className="flex flex-col items-center w-full max-w-4xl"
           >
             {/* Brand Kickoff Sub-badge */}
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-gold-500/10 border border-gold-500/20 mb-6"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-gold-500/10 border border-gold-500/20 mb-5 sm:mb-6"
             >
               <Flame className="w-3.5 h-3.5 text-gold-500 animate-pulse" />
               <span className="text-[10px] sm:text-xs font-mono tracking-[0.3em] text-gold-400 uppercase font-semibold">
@@ -130,10 +141,10 @@ export default function Home() {
             {/* Giant Title */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-6xl lg:text-8xl font-display font-black tracking-tight uppercase leading-[0.9] text-white mb-6"
+              className="text-[clamp(1.85rem,6.5vw,5.5rem)] font-display font-black tracking-tight uppercase leading-[1.0] text-white mb-5 sm:mb-6"
             >
               FORGE YOUR <br />
-              <span className="text-gradient-gold drop-shadow-[0_2px_15px_rgba(212,175,55,0.2)]">
+              <span className="text-gradient-gold drop-shadow-[0_2px_15px_rgba(212,175,55,0.25)]">
                 ULTIMATE LEGACY
               </span>
             </motion.h1>
@@ -141,7 +152,7 @@ export default function Home() {
             {/* Luxury Tagline description */}
             <motion.p
               variants={itemVariants}
-              className="text-gray-300 text-sm sm:text-lg max-w-2xl mb-10 leading-relaxed font-sans font-normal"
+              className="text-gray-300 text-xs sm:text-base lg:text-lg max-w-2xl mb-8 sm:mb-10 leading-relaxed font-sans font-normal px-2 sm:px-0"
             >
               Experience Shikrapur's premium fitness sanctuary. Outfitted with masterwork biomechanical strength lines, customized nutrition counseling, and expert-level athletic coaching.
             </motion.p>
@@ -149,15 +160,15 @@ export default function Home() {
             {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto mb-16"
+              className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 justify-center items-center w-full max-w-xs sm:max-w-none mb-12 sm:mb-16 px-4 sm:px-0"
             >
-              <Link to="/contact">
-                <Button variant="primary" size="lg" className="w-full sm:w-auto px-10">
+              <Link to="/contact" className="w-full sm:w-auto">
+                <Button variant="primary" size="lg" className="w-full sm:w-auto px-10 py-3.5 sm:py-4">
                   Join Now
                 </Button>
               </Link>
-              <Link to="/plans">
-                <Button variant="secondary" size="lg" className="w-full sm:w-auto px-10">
+              <Link to="/plans" className="w-full sm:w-auto">
+                <Button variant="secondary" size="lg" className="w-full sm:w-auto px-10 py-3.5 sm:py-4">
                   View Plans
                 </Button>
               </Link>
@@ -166,17 +177,17 @@ export default function Home() {
             {/* Responsive Statistics Grid (Staggered Counter Cards) */}
             <motion.div
               variants={itemVariants}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-full max-w-5xl border-t border-gold-500/15 pt-10"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 w-full max-w-5xl border-t border-gold-500/15 pt-8 sm:pt-10 px-2 sm:px-0"
             >
               {statsData.map((stat, idx) => (
                 <div
                   key={idx}
-                  className="flex flex-col items-center p-4 bg-charcoal/40 backdrop-blur-sm border border-gold-500/5 rounded-md hover:border-gold-500/20 transition-colors duration-300"
+                  className="flex flex-col items-center p-3.5 sm:p-5 lg:p-6 bg-charcoal/40 backdrop-blur-sm border border-gold-500/5 rounded-md hover:border-gold-500/20 transition-colors duration-300"
                 >
                   <div className="flex items-baseline">
-                    <AnimatedCounter value={stat.value} suffix={stat.suffix} className="text-2xl sm:text-4xl text-gold-500" />
+                    <AnimatedCounter value={stat.value} suffix={stat.suffix} className="text-xl sm:text-3xl lg:text-4xl text-gold-500 font-display font-black" />
                   </div>
-                  <span className="text-[10px] sm:text-xs font-mono text-gray-400 uppercase mt-2 tracking-widest font-semibold">
+                  <span className="text-[8px] sm:text-[10px] lg:text-xs font-mono text-gray-400 uppercase mt-1.5 sm:mt-2 tracking-widest font-semibold text-center">
                     {stat.label}
                   </span>
                 </div>
@@ -188,7 +199,7 @@ export default function Home() {
         {/* Scroll mouse indicator at bottom */}
         <motion.div
           style={{ opacity: opacityScrollIndicator }}
-          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1.5 z-20"
+          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1.5 z-20 hidden lg:flex"
         >
           <span className="text-[9px] font-mono tracking-[0.25em] text-gold-500/80 uppercase font-bold">
             Scroll Down

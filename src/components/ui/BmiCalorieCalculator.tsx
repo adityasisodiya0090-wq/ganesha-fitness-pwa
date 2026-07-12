@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Flame, Calculator, Sparkles, Scale, Heart, Apple } from 'lucide-react';
 
 type UnitSystem = 'metric' | 'imperial';
@@ -143,8 +143,8 @@ export default function BmiCalorieCalculator() {
     };
   };
 
-  const bmiResult = calculateBmi();
-  const calorieResult = calculateCalories();
+  const bmiResult = useMemo(() => calculateBmi(), [unit, weightKg, heightCm, weightLbs, heightFt, heightIn]);
+  const calorieResult = useMemo(() => calculateCalories(), [unit, gender, age, goal, weightKg, heightCm, weightLbs, heightFt, heightIn, activity]);
 
   return (
     <div id="calculator-section" className="w-full max-w-6xl mx-auto bg-charcoal/30 border border-gold-500/10 rounded-sm p-6 sm:p-8 lg:p-10 backdrop-blur-md">

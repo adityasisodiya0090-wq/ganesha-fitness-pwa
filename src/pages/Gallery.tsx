@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import PageTransition from '../components/ui/PageTransition';
 import Section from '../components/ui/Section';
 import ScrollReveal from '../components/ui/ScrollReveal';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Image, ZoomIn, Eye, Sparkles, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { galleryData } from '../data';
 

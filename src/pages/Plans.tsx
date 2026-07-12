@@ -31,14 +31,6 @@ export default function Plans() {
                       : 'border-gold-500/5 hover:border-gold-500/20'
                   }`}
                 >
-                  {/* Popular Glow Indicator Badge */}
-                  {plan.popular && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-gold text-matte text-[10px] font-mono font-bold px-3 py-1 uppercase tracking-[0.2em] rounded-sm shadow-lg flex items-center gap-1.5 z-10">
-                      <Sparkles className="w-3 h-3 text-matte fill-matte" />
-                      MOST POPULAR
-                    </span>
-                  )}
-
                   <div>
                     {/* Icon & Plan Subtitle Header */}
                     <div className="flex justify-between items-center mb-6 border-b border-gold-500/10 pb-4">

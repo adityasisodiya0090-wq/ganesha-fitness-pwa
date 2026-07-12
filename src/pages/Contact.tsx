@@ -5,7 +5,7 @@ import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import ScrollReveal from '../components/ui/ScrollReveal';
 import { MapPin, Phone, MessageSquare, Mail, Sparkles, CheckCircle, Clock } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
