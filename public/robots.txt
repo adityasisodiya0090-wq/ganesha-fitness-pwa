@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ganeshafitness.com/sitemap.xml
+Sitemap: https://ganesha-fitness.vercel.app/sitemap.xml

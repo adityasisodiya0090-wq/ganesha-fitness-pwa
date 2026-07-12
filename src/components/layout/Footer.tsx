@@ -135,8 +135,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4.5 h-4.5 text-gold-500 shrink-0" />
-                <a href="mailto:info@ganeshafitness.com" className="hover:text-gold-500 transition-colors duration-300 text-xs sm:text-sm">
-                  info@ganeshafitness.com
+                <a href="mailto:info@https://ganesha-fitness.vercel.app" className="hover:text-gold-500 transition-colors duration-300 text-xs sm:text-sm">
+                  info@https://ganesha-fitness.vercel.app
                 </a>
               </div>
             </div>

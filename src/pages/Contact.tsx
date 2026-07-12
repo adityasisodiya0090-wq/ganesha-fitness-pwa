@@ -110,8 +110,8 @@ export default function Contact() {
                 <Card title="Corporate Inquiries" subtitle="EMAIL ADDRESS" hoverEffect={false} className="bg-charcoal/40">
                   <div className="flex gap-3 text-sm text-gray-300 mt-2 font-sans">
                     <Mail className="w-5 h-5 text-gold-500 shrink-0" />
-                    <a href="mailto:info@ganeshafitness.com" className="hover:text-gold-500 transition-colors">
-                      info@ganeshafitness.com
+                    <a href="mailto:info@https://ganesha-fitness.vercel.app" className="hover:text-gold-500 transition-colors">
+                      info@https://ganesha-fitness.vercel.app
                     </a>
                   </div>
                 </Card>
